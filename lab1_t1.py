@@ -1,18 +1,19 @@
-##python code
 import time
 
-num_Steps = 1000
-steps = 1/num_Steps
-sum = 0.0
+num_steps = 100000
+steps = 1.0 / float(num_steps)
 
-start = time.perf_counter()
-for i in range(num_Steps):
+start_time = time.time()
+sum_val = 0.0
+
+for i in range(num_steps):
     x = (i + 0.5) * steps
-    sum = sum + 4.0 / (1 + x*x)
+    sum_val += 4.0 / (1.0 + x * x)
 
-pi = steps * sum
-print("PI ",pi)
-end = time.perf_counter()
+pi = steps * sum_val
 
-execution_time = (end - start) * 1e6
-print("PI calculation took ", execution_time, " microsec to run.")
+print("PI:", pi)
+
+end_time = time.time()
+time_taken = (end_time - start_time) * 1e6
+print("PI calculation took", time_taken, "microseconds to run.")
